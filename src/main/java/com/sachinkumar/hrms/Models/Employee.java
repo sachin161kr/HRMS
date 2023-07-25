@@ -18,15 +18,15 @@ public class Employee {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int emd_id;
+    private int emdid;
 
-    private String emp_name;
+    private String empName;
 
-    private String emp_email;
+    private String empEmail;
 
-    private String emp_address;
+    private String empAddress;
 
-    private String emp_phone;
+    private String empPhone;
 
     @OneToOne(cascade = CascadeType.ALL)
     private Skill skills;

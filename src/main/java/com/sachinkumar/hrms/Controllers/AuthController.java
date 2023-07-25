@@ -2,6 +2,7 @@ package com.sachinkumar.hrms.Controllers;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,13 +14,16 @@ import com.sachinkumar.hrms.Repository.EmployeeRepo;
 import com.sachinkumar.hrms.Repository.UserRepo;
 
 @RestController
-@RequestMapping("/users")
+@RequestMapping("/auth")
 public class AuthController {
 
+    @Autowired
     UserRepo userRepo;
+
+    @Autowired
     EmployeeRepo employeeRepo;
 
-    @PostMapping("/register")
+    @PostMapping("/registerUser")
     public String register(@RequestBody User user) {
         List<User> allUsers = userRepo.findAll();
 
@@ -38,7 +42,7 @@ public class AuthController {
         List<Employee> allEmployees = employeeRepo.findAll();
 
         for (Employee u : allEmployees) {
-            if (u.getEmp_address().equals(employee.getEmp_email())) {
+            if (u.getEmpAddress().equals(employee.getEmpEmail())) {
                 return "Employee Already Registered";
             }
         }
