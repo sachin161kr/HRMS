@@ -1,7 +1,5 @@
 package com.sachinkumar.hrms.Models;
 
-import org.hibernate.annotations.ManyToAny;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
