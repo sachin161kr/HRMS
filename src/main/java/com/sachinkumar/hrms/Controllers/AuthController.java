@@ -38,7 +38,10 @@ public class AuthController {
     }
 
     @PostMapping("/registerEmployee")
-    public String registerEmployee(Employee employee) {
+    public String registerEmployee(@RequestBody Employee employee) {
+
+        System.out.println(employee);
+
         List<Employee> allEmployees = employeeRepo.findAll();
 
         for (Employee u : allEmployees) {

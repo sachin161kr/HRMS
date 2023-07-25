@@ -34,8 +34,8 @@ public class MainController {
     }
 
     @PostMapping("/getEmployeeData")
-    public Employee getEmployeeData(@RequestParam String email) {
-        return employeeRepo.findEmployeeByEmpEmail(email);
+    public Employee getEmployeeData(@RequestBody Employee employee) {
+        return employeeRepo.findEmployeeByEmpEmail(employee.getEmpEmail());
 
     }
 
@@ -48,8 +48,18 @@ public class MainController {
     }
 
     @PostMapping("/getUserData")
-    public User getUserData(@RequestParam String email) {
-        return userRepo.findUserByEmail(email);
+    public User getUserData(@RequestBody User user) {
+        return userRepo.findUserByEmail(user.getEmail());
+    }
+
+    @GetMapping("/allUsers")
+    public List<User> getAllUsers() {
+        return userRepo.findAll();
+    }
+
+    @GetMapping("/allEmployees")
+    public List<Employee> getAllEmployees() {
+        return employeeRepo.findAll();
     }
 
 }

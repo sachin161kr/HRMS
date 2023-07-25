@@ -4,6 +4,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,14 +18,18 @@ public class Education {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int education_id;
+    private int educationId;
 
-    private String education_name;
+    private String educationName;
 
-    private String education_type;
+    private String educationType;
 
-    private String education_start_date;
+    private String educationStartDate;
 
-    private String education_end_date;
+    private String educationEndDate;
+
+    @ManyToOne
+    @JoinColumn(name = "emp_id", referencedColumnName = "emp_id")
+    private Employee employee;
 
 }
